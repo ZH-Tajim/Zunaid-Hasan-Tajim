@@ -1,0 +1,785 @@
+/* ============================================================
+   Zunaid Hasan Tajim — Research Profile Website
+   Stylesheet
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy:       #0B1628;
+  --navy-mid:   #122040;
+  --navy-light: #1A2F55;
+  --teal:       #2EC4B6;
+  --teal-dim:   #1e9e93;
+  --gold:       #E8C84A;
+  --slate:      #8A9BB5;
+  --white:      #F8F9FF;
+  --cream:      #EEF0F8;
+  --card-bg:    #111e35;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAVIGATION ─────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 22, 40, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(46, 196, 182, 0.15);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--teal);
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--slate);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--teal); }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--teal);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  min-height: 92vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+
+.hero-text .eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.hero-text .subtitle {
+  font-size: 1.05rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-text .bio {
+  color: var(--slate);
+  font-size: 0.95rem;
+  max-width: 540px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(46, 196, 182, 0.35);
+  border-radius: 4px;
+  color: var(--teal);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  background: rgba(46, 196, 182, 0.05);
+}
+
+.social-btn:hover {
+  background: rgba(46, 196, 182, 0.15);
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.social-btn svg { flex-shrink: 0; }
+
+/* ── PHOTO RING ──────────────────────────────────────────── */
+.hero-photo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-ring {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.photo-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--teal), var(--gold), var(--navy-mid), var(--teal));
+  animation: spin 8s linear infinite;
+}
+
+.photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  background: var(--navy);
+  z-index: 0;
+}
+
+.photo-ring img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--navy);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── STAT BADGES ─────────────────────────────────────────── */
+.stat-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  text-align: center;
+  padding: 0.6rem 1.1rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.2);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+
+.badge:hover { border-color: rgba(46, 196, 182, 0.5); }
+
+.badge .num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.1;
+}
+
+.badge .lbl {
+  font-size: 0.65rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ── SECTIONS ────────────────────────────────────────────── */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(46, 196, 182, 0.2);
+}
+
+/* ── PUBLICATIONS ────────────────────────────────────────── */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pub-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-left: 3px solid var(--teal);
+  border-radius: 6px;
+  padding: 1.4rem 1.6rem;
+  transition: all 0.25s;
+}
+
+.pub-card:hover {
+  border-left-color: var(--gold);
+  transform: translateX(4px);
+  box-shadow: -4px 0 20px rgba(46, 196, 182, 0.12);
+}
+
+.pub-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pub-year {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  background: rgba(232, 200, 74, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.pub-journal {
+  font-size: 0.75rem;
+  color: var(--slate);
+  font-style: italic;
+}
+
+.pub-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.pub-authors {
+  font-size: 0.8rem;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+
+.pub-authors strong { color: var(--teal); }
+
+.doi-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.doi-link:hover { color: var(--gold); text-decoration: underline; }
+
+/* ── RESEARCH GRID ───────────────────────────────────────── */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.research-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.25s;
+}
+
+.research-card:hover {
+  border-color: rgba(46, 196, 182, 0.4);
+  box-shadow: 0 4px 24px rgba(46, 196, 182, 0.08);
+  transform: translateY(-2px);
+}
+
+.research-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(46, 196, 182, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.research-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.research-period {
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.research-desc {
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* ── EDUCATION ───────────────────────────────────────────── */
+.edu-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.edu-degree {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.edu-institution {
+  color: var(--teal);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.edu-meta {
+  color: var(--slate);
+  font-size: 0.82rem;
+  margin-bottom: 1rem;
+}
+
+.courses-label {
+  font-size: 0.78rem;
+  color: var(--slate);
+  margin-bottom: 0.5rem;
+}
+
+.courses-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.course-tag {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.65rem;
+  background: rgba(46, 196, 182, 0.08);
+  border: 1px solid rgba(46, 196, 182, 0.2);
+  border-radius: 3px;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ── IELTS SCORES ────────────────────────────────────────── */
+.ielts-heading {
+  font-size: 0.8rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+}
+
+.ielts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.ielts-score {
+  text-align: center;
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.15);
+  border-radius: 8px;
+  padding: 1.2rem 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.ielts-score:hover { border-color: rgba(46, 196, 182, 0.4); }
+
+.ielts-score .s {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--teal);
+  display: block;
+}
+
+.ielts-score .l {
+  font-size: 0.68rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.ielts-score.overall { border-color: rgba(232, 200, 74, 0.4); }
+.ielts-score.overall .s { color: var(--gold); }
+
+/* ── SKILLS ──────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-group {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 8px;
+  padding: 1.4rem;
+}
+
+.skill-group h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--slate);
+  padding: 0.35rem 0;
+}
+
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* ── EXPERIENCE ──────────────────────────────────────────── */
+.exp-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+}
+
+.exp-role {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.exp-company {
+  color: var(--teal);
+  font-size: 0.87rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.exp-period {
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 1rem;
+}
+
+.exp-points { list-style: none; }
+
+.exp-points li {
+  font-size: 0.83rem;
+  color: var(--slate);
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.exp-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-size: 0.75rem;
+  top: 0.35rem;
+}
+
+/* ── CONFERENCES ─────────────────────────────────────────── */
+.conf-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  transition: border-color 0.2s;
+}
+
+.conf-card:hover { border-color: rgba(46, 196, 182, 0.35); }
+
+.conf-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: rgba(46, 196, 182, 0.25);
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 0.1rem;
+}
+
+.conf-title {
+  font-size: 0.9rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.conf-venue {
+  font-size: 0.78rem;
+  color: var(--slate);
+}
+
+/* ── AWARDS ──────────────────────────────────────────────── */
+.awards-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.award-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: var(--slate);
+  transition: border-color 0.2s;
+}
+
+.award-item:hover { border-color: rgba(232, 200, 74, 0.35); }
+
+.award-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(46, 196, 182, 0.12);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.contact-card-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.contact-card p {
+  font-size: 0.9rem;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.contact-card .sub {
+  font-size: 0.82rem;
+  color: var(--slate);
+  margin-bottom: 0.3rem;
+}
+
+.contact-card a {
+  color: var(--teal);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.contact-card a:hover { text-decoration: underline; }
+
+/* ── DIVIDER ─────────────────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(46, 196, 182, 0.15), transparent);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 2.5rem;
+  border-top: 1px solid rgba(46, 196, 182, 0.1);
+  color: var(--slate);
+  font-size: 0.8rem;
+}
+
+footer a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+footer a:hover { text-decoration: underline; }
+
+/* ── SCROLL ANIMATIONS ───────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 3rem;
+  }
+
+  .hero-photo-wrap { order: -1; }
+  .photo-ring { width: 220px; height: 220px; }
+  .social-links { justify-content: center; }
+  .stat-badges { justify-content: center; }
+  .hero-text .bio { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .ielts-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(11, 22, 40, 0.98); padding: 1rem 2rem; border-bottom: 1px solid rgba(46,196,182,0.15); gap: 1rem; }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  section { padding: 3rem 1.25rem; }
+  .ielts-grid { grid-template-columns: repeat(3, 1fr); }
+  .research-grid { grid-template-columns: 1fr; }
+  .photo-ring { width: 180px; height: 180px; }
+}
